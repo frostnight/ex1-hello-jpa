@@ -18,16 +18,13 @@ public class JpaMain {
 
 		try{
 			// 영속
-			Member member = em.find(Member.class, 150L);
-			member.setName("ZZZZ");
+			Member member = new Member();
+			member.setUsername("C");
 
-			//em.persist(member);
-
-			if (member.getName().equals("ZZZZ")) {
-				em.persist(member);
-			}
-
-			System.out.println("=========================");
+			System.out.println("========");
+			em.persist(member);
+			System.out.println("member id = " + member.getId());
+			System.out.println("=========");
 
 			tx.commit();
 		} catch(Exception e){
