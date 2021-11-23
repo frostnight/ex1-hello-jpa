@@ -17,14 +17,6 @@ public class JpaMain {
 		tx.begin();
 
 		try{
-			// 영속
-			Member member = new Member();
-			member.setUsername("C");
-
-			System.out.println("========");
-			em.persist(member);
-			System.out.println("member id = " + member.getId());
-			System.out.println("=========");
 
 			tx.commit();
 		} catch(Exception e){
