@@ -1,30 +1,22 @@
-package hellojpa;
+package jpql;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Parent {
+public class Team {
 
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
 	private Long id;
-
 	private String name;
 
-	@OneToMany(mappedBy = "parent", orphanRemoval = true)
-	private List<Child> childList = new ArrayList<>();
-
-	public void addChild(Child child){
-		childList.add(child);
-		child.setParent(this);
-	}
+	@OneToMany(mappedBy = "team")
+	private List<Member> members = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -42,11 +34,11 @@ public class Parent {
 		this.name = name;
 	}
 
-	public List<Child> getChildList() {
-		return childList;
+	public List<Member> getMembers() {
+		return members;
 	}
 
-	public void setChildList(List<Child> childList) {
-		this.childList = childList;
+	public void setMembers(List<Member> members) {
+		this.members = members;
 	}
 }
