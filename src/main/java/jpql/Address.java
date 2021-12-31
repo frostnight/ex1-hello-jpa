@@ -41,7 +41,7 @@ public class Address {
 			return true;
 		if (o == null || getClass() != o.getClass())
 			return false;
-		hellojpa.Address address = (hellojpa.Address)o;
+		Address address = (Address)o;
 		return Objects.equals(getCity(), address.getCity()) && Objects.equals(getStreet(),
 			address.getStreet()) && Objects.equals(getZipcode(), address.getZipcode());
 	}
