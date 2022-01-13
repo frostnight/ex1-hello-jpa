@@ -20,30 +20,23 @@ public class JpaMain {
 
 		try{
 
-			Team team = new Team();
-			team.setName("teamA");
-			em.persist(team);
+			Member member1 = new Member();
+			member1.setUsername("관리자1");
+			em.persist(member1);
 
-			Member member = new Member();
-			member.setUsername("teamA");
-			member.setAge(10);
-			member.setType(MemberType.ADMIN);
-			member.setTeam(team);
-			em.persist(member);
+			Member member2 = new Member();
+			member2.setUsername("관리자2");
+			em.persist(member2);
 
 			em.flush();
 			em.clear();
 
-			String query = "select m.username, 'HELLO', true From Member m "+
-							"where m.type = :userType";
-			List<Object[]> resultList = em.createQuery(query)
-				.setParameter("userType", MemberType.ADMIN)
-				.getResultList();
+			String query = "select locate('de', 'abcdegf') From Member m";
 
-			for (Object[] objects : resultList) {
-				System.out.println("objects[0] = " + objects[0]);
-				System.out.println("objects[1] = " + objects[1]);
-				System.out.println("objects[2] = " + objects[2]);
+			List<Integer> resultList = em.createQuery(query, Integer.class).getResultList();
+
+			for (Integer s : resultList) {
+				System.out.println("s = " + s);
 			}
 
 			tx.commit();
